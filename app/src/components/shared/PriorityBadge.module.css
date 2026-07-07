@@ -1,0 +1,28 @@
+.badge {
+  flex: none;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font: 600 9px var(--font-mono);
+  letter-spacing: 0.03em;
+}
+
+.badge[data-priority='kritiek'] {
+  background: var(--prio-kritiek-bg);
+  color: var(--prio-kritiek-fg);
+}
+
+.badge[data-priority='urgent'] {
+  background: var(--prio-urgent-bg);
+  color: var(--prio-urgent-fg);
+}
+
+.badge[data-priority='nice'] {
+  background: var(--prio-nice-bg);
+  color: var(--prio-nice-fg);
+}
+
+.badge[data-priority='done'] {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--green);
+  font-size: 9.5px;
+}

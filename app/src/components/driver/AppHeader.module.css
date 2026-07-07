@@ -1,0 +1,79 @@
+.header {
+  flex: none;
+  padding: 14px 18px 14px;
+  background: var(--bg-app);
+  border-bottom: 1px solid var(--border-08);
+  z-index: 2;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.title {
+  font: 700 19px var(--font-sans);
+  color: var(--text-primary);
+}
+
+.bell {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  border: 1.5px solid var(--accent-border-soft);
+  background: var(--accent-bg-soft);
+  color: var(--accent);
+  font: 700 11px var(--font-sans);
+  cursor: pointer;
+}
+
+.badge {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-radius: 9px;
+  padding: 1px 6px;
+  font: 700 10px var(--font-mono);
+}
+
+.mid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 11px;
+}
+
+.vloot {
+  font: 600 12px var(--font-mono);
+  color: var(--accent);
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.track {
+  flex: 1;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 4px;
+  transition: width 0.2s;
+}
+
+.progressTxt {
+  font: 600 11px var(--font-mono);
+  color: var(--text-primary);
+}

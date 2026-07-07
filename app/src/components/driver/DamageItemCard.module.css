@@ -1,0 +1,53 @@
+.card {
+  background: var(--bg-panel);
+  border: 1px solid var(--red-tint-border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+
+.label {
+  display: block;
+  font: 600 11px var(--font-sans);
+  color: var(--text-muted-55);
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border-14);
+  border-radius: var(--radius-input);
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-input);
+  margin-bottom: 11px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 54px;
+  padding: 10px 11px;
+  border: 1.5px solid var(--border-14);
+  border-radius: var(--radius-input);
+  font-size: 13px;
+  color: var(--text-primary);
+  background: var(--bg-input);
+  resize: none;
+  margin-bottom: 11px;
+}
+
+.photoRow {
+  margin-bottom: 11px;
+}
+
+.remove {
+  width: 100%;
+  padding: 9px;
+  border: 1.5px solid var(--border-14);
+  border-radius: var(--radius-input);
+  background: transparent;
+  color: var(--text-muted-50);
+  font: 600 12px var(--font-sans);
+  cursor: pointer;
+}

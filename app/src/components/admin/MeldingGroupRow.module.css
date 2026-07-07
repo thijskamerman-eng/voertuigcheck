@@ -1,0 +1,56 @@
+.wrap {
+  margin-bottom: 10px;
+}
+
+.head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-panel-secondary);
+  border: 1px solid var(--border-08);
+  border-radius: 12px;
+  padding: 11px 13px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.chevron {
+  font: 600 12px var(--font-sans);
+  color: var(--text-muted-50);
+  width: 12px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.dot[data-deel='truck'] {
+  background: var(--accent);
+}
+
+.dot[data-deel='trailer'] {
+  background: var(--blue);
+}
+
+.title {
+  font: 600 11px var(--font-mono);
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  flex: 1;
+  min-width: 0;
+}
+
+.count {
+  font: 600 10.5px var(--font-mono);
+  color: var(--text-muted-40);
+  width: 14px;
+  text-align: right;
+}
+
+.list {
+  padding: 9px 0 2px;
+}

@@ -1,0 +1,30 @@
+.wrap {
+  flex: none;
+  padding: 12px 18px 18px;
+  background: var(--bg-app);
+  border-top: 1px solid var(--border-08);
+}
+
+.submit {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: 700 15px var(--font-sans);
+  cursor: pointer;
+}
+
+.link {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted-50);
+  font: 600 12.5px var(--font-sans);
+  cursor: pointer;
+  text-align: center;
+}

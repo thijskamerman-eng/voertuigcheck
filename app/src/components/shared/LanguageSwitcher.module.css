@@ -1,0 +1,21 @@
+.row {
+  display: flex;
+  gap: 5px;
+}
+
+.btn {
+  flex: none;
+  padding: 3px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border-14);
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+  opacity: 0.6;
+}
+
+.btn[data-active='true'] {
+  border-color: var(--accent);
+  background: var(--accent-bg-softer);
+  opacity: 1;
+}

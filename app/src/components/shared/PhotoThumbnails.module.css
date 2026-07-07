@@ -1,0 +1,45 @@
+.row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.thumb {
+  border-radius: 9px;
+  background: repeating-linear-gradient(45deg, #2b2e33, #2b2e33 6px, #212327 6px, #212327 12px);
+  border: 1px solid var(--border-10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.placeholder {
+  font: 600 8px var(--font-mono);
+  color: var(--text-muted-40);
+  text-transform: uppercase;
+}
+
+.add {
+  border-radius: 9px;
+  border: 1.5px dashed var(--border-18);
+  background: transparent;
+  color: var(--accent);
+  font: 600 22px var(--font-sans);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}

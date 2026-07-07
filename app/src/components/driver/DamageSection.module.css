@@ -1,0 +1,21 @@
+.wrap {
+  margin-top: 10px;
+}
+
+.heading {
+  font: 600 10px var(--font-mono);
+  color: var(--red);
+  letter-spacing: 0.08em;
+  margin: 0 2px 8px;
+}
+
+.add {
+  width: 100%;
+  padding: 11px;
+  border: 1.5px dashed var(--red-tint-border-dashed);
+  border-radius: 12px;
+  background: var(--red-tint-bg-dashed);
+  color: var(--red-mid);
+  font: 700 12.5px var(--font-sans);
+  cursor: pointer;
+}

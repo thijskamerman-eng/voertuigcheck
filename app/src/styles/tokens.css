@@ -1,0 +1,70 @@
+:root {
+  /* Colors */
+  --bg-app: #161719;
+  --bg-panel: #212327;
+  --bg-panel-secondary: #1c1e22;
+  --bg-input: #161719;
+  --bg-input-disabled: #1a1c1f;
+
+  --text-primary: #f2f2f0;
+  --text-muted-50: rgba(255, 255, 255, 0.5);
+  --text-muted-55: rgba(255, 255, 255, 0.55);
+  --text-muted-60: rgba(255, 255, 255, 0.6);
+  --text-muted-40: rgba(255, 255, 255, 0.4);
+  --text-muted-30: rgba(255, 255, 255, 0.3);
+  --text-muted-25: rgba(255, 255, 255, 0.25);
+
+  --border-06: rgba(255, 255, 255, 0.06);
+  --border-08: rgba(255, 255, 255, 0.08);
+  --border-10: rgba(255, 255, 255, 0.1);
+  --border-14: rgba(255, 255, 255, 0.14);
+  --border-18: rgba(255, 255, 255, 0.18);
+
+  --accent: oklch(0.8 0.15 80);
+  --accent-bg-soft: rgba(240, 180, 60, 0.12);
+  --accent-bg-softer: rgba(240, 180, 60, 0.16);
+  --accent-border-soft: rgba(240, 180, 60, 0.5);
+  --accent-ink: #161719;
+
+  --blue: oklch(0.62 0.13 250);
+
+  --green: oklch(0.72 0.13 150);
+  --green-border: oklch(0.62 0.14 150);
+
+  --red: oklch(0.6 0.19 25);
+  --red-mid: oklch(0.65 0.19 25);
+  --red-soft: oklch(0.7 0.13 25);
+  --red-tint-bg: rgba(255, 90, 70, 0.06);
+  --red-tint-border: rgba(255, 90, 70, 0.2);
+  --red-tint-border-strong: rgba(255, 90, 70, 0.35);
+  --red-tint-border-dashed: rgba(255, 90, 70, 0.4);
+  --red-tint-bg-dashed: rgba(255, 90, 70, 0.07);
+
+  --prio-kritiek-bg: oklch(0.6 0.19 25);
+  --prio-kritiek-fg: #fff;
+  --prio-urgent-bg: oklch(0.8 0.15 80);
+  --prio-urgent-fg: #161719;
+  --prio-nice-bg: rgba(255, 255, 255, 0.14);
+  --prio-nice-fg: rgba(255, 255, 255, 0.7);
+
+  /* Typography */
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Radii */
+  --radius-card: 16px;
+  --radius-sub: 12px;
+  --radius-input: 10px;
+  --radius-btn-sm: 8px;
+  --radius-btn-lg: 22px;
+  --radius-badge: 6px;
+
+  /* Spacing rhythm */
+  --sp-1: 6px;
+  --sp-2: 8px;
+  --sp-3: 10px;
+  --sp-4: 11px;
+  --sp-5: 14px;
+  --sp-6: 18px;
+  --sp-7: 20px;
+}
