@@ -20,6 +20,21 @@ export interface DamageItem {
 
 export type AppView = 'form' | 'done' | 'admin-login' | 'admin-backend';
 
+/** An immutable snapshot of a driver's check, captured at submit time so it survives the draft being reset for the next check. */
+export interface SubmittedCheck {
+  id: string;
+  vlootTruck: string;
+  vlootTrailer: string;
+  driverName: string;
+  datum: string;
+  truckNvt: boolean;
+  trailerNvt: boolean;
+  checkStatus: Record<string, CheckStatus>;
+  notes: Record<string, string>;
+  photos: Record<string, Photo[]>;
+  damages: DamageItem[];
+}
+
 /** A single checkpoint that is not-OK (or a damage entry) surfaced to the admin overview. */
 export interface Melding {
   key: string;

@@ -17,11 +17,22 @@ function useDecoratedMeldingen() {
   const vlootTruck = useAppStore((s) => s.vlootTruck);
   const vlootTrailer = useAppStore((s) => s.vlootTrailer);
   const archivedIds = useAppStore((s) => s.archivedIds);
+  const submittedChecks = useAppStore((s) => s.submittedChecks);
+  const draftAlreadySubmitted = useAppStore((s) => !!s.submittedAt);
 
   return useMemo(() => {
-    const all = getAllMeldingen(checkStatus, notes, photos, damages, vlootTruck, vlootTrailer);
+    const all = getAllMeldingen(
+      checkStatus,
+      notes,
+      photos,
+      damages,
+      vlootTruck,
+      vlootTrailer,
+      submittedChecks,
+      draftAlreadySubmitted,
+    );
     return decorateMeldingen(all, archivedIds);
-  }, [checkStatus, notes, photos, damages, vlootTruck, vlootTrailer, archivedIds]);
+  }, [checkStatus, notes, photos, damages, vlootTruck, vlootTrailer, submittedChecks, draftAlreadySubmitted, archivedIds]);
 }
 
 export function useOpenMeldingenCount(): number {

@@ -2,7 +2,7 @@ import { ALL_CHECKPOINT_IDS, CATEGORIES, CHECKPOINTS, PRIORITY, TRAILER_CHECKPOI
 import { CHECKPOINT_I18N } from '../i18n/translations';
 import { SEED_HISTORY, SEED_MELDINGEN } from '../data/seed';
 import type { Deel, Priority } from '../data/checklist';
-import type { DamageItem, Melding, Photo } from '../types';
+import type { DamageItem, Melding, Photo, SubmittedCheck } from '../types';
 import type { Lang } from '../i18n/translations';
 
 export function checkpointText(id: string, lang: Lang): { label: string; sub: string } {
@@ -79,6 +79,45 @@ export function getDamageMeldingen(damages: DamageItem[], vlootTruck: string, vl
   });
 }
 
+/** Not-OK checkpoints + damage from every submitted check (persists across drafts being reset). */
+export function getSubmittedMeldingen(submittedChecks: SubmittedCheck[]): Melding[] {
+  const out: Melding[] = [];
+  for (const check of submittedChecks) {
+    const applicable = getApplicableIds(check.truckNvt, check.trailerNvt);
+    for (const id of applicable) {
+      if (check.checkStatus[id] !== 'nok') continue;
+      const isTruck = TRUCK_CHECKPOINT_IDS.has(id);
+      const vloot = (isTruck ? check.vlootTruck : check.vlootTrailer).trim() || (isTruck ? '214' : '512');
+      out.push({
+        key: `sub-${check.id}-${id}`,
+        vloot,
+        deel: (isTruck ? 'truck' : 'trailer') as Deel,
+        punt: checkpointText(id, 'nl').label,
+        note: (check.notes[id] || '').trim() || '—',
+        photos: check.photos[id] || [],
+        datum: check.datum,
+        priority: (PRIORITY[id] || 'urgent') as Priority,
+        startsHandled: false,
+      });
+    }
+    for (const d of check.damages) {
+      const vloot = (d.deel === 'truck' ? check.vlootTruck : check.vlootTrailer).trim() || (d.deel === 'truck' ? '214' : '512');
+      out.push({
+        key: `sub-${check.id}-damage-${d.id}`,
+        vloot,
+        deel: d.deel,
+        punt: `Schade · ${(d.plek || '').trim() || 'onbekend'}`,
+        note: (d.note || '').trim() || '—',
+        photos: d.photos,
+        datum: check.datum,
+        priority: 'kritiek' as Priority,
+        startsHandled: false,
+      });
+    }
+  }
+  return out;
+}
+
 export function getAllMeldingen(
   checkStatus: Record<string, string | null>,
   notes: Record<string, string>,
@@ -86,11 +125,15 @@ export function getAllMeldingen(
   damages: DamageItem[],
   vlootTruck: string,
   vlootTrailer: string,
+  submittedChecks: SubmittedCheck[],
+  draftAlreadySubmitted: boolean,
 ): Melding[] {
   return [
-    ...getLiveMeldingen(checkStatus, notes, photos, vlootTruck, vlootTrailer),
+    // While the driver is still filling in the form (not yet submitted), show it live for immediate feedback.
+    ...(draftAlreadySubmitted ? [] : getLiveMeldingen(checkStatus, notes, photos, vlootTruck, vlootTrailer)),
+    ...(draftAlreadySubmitted ? [] : getDamageMeldingen(damages, vlootTruck, vlootTrailer)),
     ...SEED_MELDINGEN,
-    ...getDamageMeldingen(damages, vlootTruck, vlootTrailer),
+    ...getSubmittedMeldingen(submittedChecks),
   ];
 }
 

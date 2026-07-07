@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { ALL_CHECKPOINT_IDS, CATEGORIES, TRAILER_CHECKPOINT_IDS, TRUCK_CHECKPOINT_IDS } from '../data/checklist';
-import type { AppView, CheckStatus, DamageItem, LightboxState, Photo } from '../types';
+import type { AppView, CheckStatus, DamageItem, LightboxState, Photo, SubmittedCheck } from '../types';
 import type { Lang } from '../i18n/translations';
 
 let seq = 0;
@@ -30,6 +30,8 @@ interface AppState {
   damages: DamageItem[];
 
   submittedAt: string | null;
+  /** Immutable snapshots of past submissions — the admin overview reads from here, not from the (resettable) draft above. */
+  submittedChecks: SubmittedCheck[];
 
   // Admin
   adminUser: string;
@@ -106,6 +108,7 @@ export const useAppStore = create<AppState>((set) => ({
   damages: [],
 
   submittedAt: null,
+  submittedChecks: [],
 
   adminUser: '',
   adminPass: '',
@@ -164,7 +167,26 @@ export const useAppStore = create<AppState>((set) => ({
   removeDamage: (id) => set((s) => ({ damages: s.damages.filter((d) => d.id !== id) })),
 
   submitCheck: () =>
-    set({ submittedAt: new Date().toLocaleDateString('nl-NL', { day: '2-digit', month: '2-digit' }), view: 'done' }),
+    set((s) => {
+      const snapshot: SubmittedCheck = {
+        id: genId('check'),
+        vlootTruck: s.vlootTruck,
+        vlootTrailer: s.vlootTrailer,
+        driverName: s.driverName,
+        datum: 'vandaag',
+        truckNvt: s.truckNvt,
+        trailerNvt: s.trailerNvt,
+        checkStatus: s.checkStatus,
+        notes: s.notes,
+        photos: s.photos,
+        damages: s.damages,
+      };
+      return {
+        submittedChecks: [...s.submittedChecks, snapshot],
+        submittedAt: new Date().toLocaleDateString('nl-NL', { day: '2-digit', month: '2-digit' }),
+        view: 'done',
+      };
+    }),
   resetCheck: () =>
     set({
       view: 'form',
